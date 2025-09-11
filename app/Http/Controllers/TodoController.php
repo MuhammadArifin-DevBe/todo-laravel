@@ -10,7 +10,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::all();
+        $todos = auth()->user()->todos;
 
 
         return view('daftar-todo')->with([
@@ -28,7 +28,8 @@ class TodoController extends Controller
         $todo = Todo::create([
             'name' => $name,
             'description' => $description,
-            'is_done' => false
+            'is_done' => false,
+            'user_id' => auth()->id()
         ]);
 
         return redirect('/todo');

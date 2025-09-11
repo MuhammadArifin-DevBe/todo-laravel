@@ -1,5 +1,4 @@
-<li class="flex items-center gap-x-3 mt-4 border-b last:border-none border-gray-400">
-    {{-- checkbox --}}
+<li class="bg-white flex items-center gap-x-3 mt-4 p-4 border-b last:border-none border-gray-400 rounded-lg shadow-md">
     <div class="inline-flex items-center relative">
         <label class="flex items-center cursor-pointer">
             <input type="checkbox" @checked($todo->is_done)
@@ -17,7 +16,6 @@
         </label>
     </div>
 
-    {{-- isi todo --}}
     <div>
         <h1 class="text-xl font-semibold text-gray-900 @if($todo->is_done) line-through text-gray-500 @endif">
             {{ $todo->name }}
@@ -33,7 +31,6 @@
         </span>
     </div>
 
-    {{-- action button --}}
     <div class="ml-auto flex items-center gap-x-1">
         <a href="{{ route('todo.edit', $todo->id) }}" class="px-2 text-blue-600 hover:text-blue-800">
             <span>

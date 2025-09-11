@@ -23,9 +23,11 @@ class TodoController extends Controller
     {
         $data = $req->all();
         $name = $data['name'];
+        $description = $data['description'] ?? null;
 
         $todo = Todo::create([
             'name' => $name,
+            'description' => $description,
             'is_done' => false
         ]);
 
@@ -39,7 +41,7 @@ class TodoController extends Controller
 
         $todo->delete();
 
-        return redirect('/todo');
+        return response()->json(['message' => 'Todo deleted successfully']);
     }
 
     public function edit($idTodo)
@@ -56,6 +58,7 @@ class TodoController extends Controller
 
         $todo->update([
             'name' => $request->name,
+            'description' => $request->description,
             'is_done' => $request->is_done
         ]);
 
